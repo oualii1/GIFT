@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claim Your Gift Card</title>
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --accent: #3498db;
+      --success: #27ae60;
+      --light-bg: #ecf0f1;
+      --text-color: #2c3e50;
+    }
+
+    body {
+      margin: 0;
+      background: var(--light-bg);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text-color);
+    }
+
+    .container {
+      max-width: 420px;
+      margin: 60px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 26px;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .stats {
+      font-size: 14px;
+      margin-bottom: 14px;
+      color: #7f8c8d;
+    }
+
+    #statusMsg {
+      margin-top: 20px;
+      font-weight: 500;
+    }
+
+    .unlock-btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Claim Your Free Gift Card</h1>
+    <p class="stats">Live Visitors: <span id="liveVisitors">213</span> | Last Claimed: <span id="lastCard">Amazon $50</span></p>
+
+    <select id="cardType">
+      <option value="Amazon">Amazon Gift Card</option>
+      <option value="Google Play">Google Play Gift Card</option>
+      <option value="iTunes">iTunes Gift Card</option>
+      <option value="PayPal">PayPal Gift Card</option>
+      <option value="Visa">Visa Gift Card</option>
+      <option value="Netflix">Netflix Gift Card</option>
+      <option value="Xbox">Xbox Gift Card</option>
+      <option value="PlayStation">PlayStation Gift Card</option>
+      <option value="Steam">Steam Gift Card</option>
+      <option value="Roblox">Roblox Gift Card</option>
+      <option value="Fortnite">Fortnite V-Bucks</option>
+    </select>
+
+    <button id="generateBtn">Generate Now</button>
+    <p id="statusMsg"></p>
+  </div>
+
+  <div class="footer">For educational purposes only. This site is not affiliated with any brand shown above.</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById("generateBtn").addEventListener("click", function () {
+        const card = document.getElementById("cardType").value;
+        const msg = document.getElementById("statusMsg");
+        msg.style.color = 'var(--success)';
+        msg.innerHTML = "Connecting to secure server...";
+
+        setTimeout(function () {
+          msg.innerHTML = "Generating <strong>" + card + "</strong> code...";
+          setTimeout(function () {
+            msg.innerHTML = "<strong>Success!</strong> Click below to unlock your card.";
+            msg.innerHTML += "<br><a class='unlock-btn' href='https://your-ogads-link.com'>Unlock Now</a>";
+          }, 2000);
+        }, 1500);
+      });
+    });
+  </script>
+</body>
+</html>
